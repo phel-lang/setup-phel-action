@@ -1,0 +1,41 @@
+name: 'Setup Phel'
+description: 'Install Phel language and PHP for use in GitHub Actions workflows'
+author: 'phel-lang'
+branding:
+  icon: 'code'
+  color: 'purple'
+
+inputs:
+  phel-version:
+    description: 'Phel version constraint for `composer require` (default: latest stable)'
+    required: false
+    default: '*'
+  php-version:
+    description: 'PHP version (Phel requires >= 8.4)'
+    required: false
+    default: '8.4'
+  tools:
+    description: 'Extra tools to install via shivammathur/setup-php (default: composer:v2)'
+    required: false
+    default: 'composer:v2'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ inputs.php-version }}
+        tools: ${{ inputs.tools }}
+        coverage: none
+
+    - name: Install Phel globally
+      shell: bash
+      run: |
+        composer global require "phel-lang/phel-lang:${{ inputs.phel-version }}" --no-progress --no-interaction
+        BIN_DIR="$(composer global config bin-dir --absolute -q)"
+        echo "$BIN_DIR" >> "$GITHUB_PATH"
+
+    - name: Verify installation
+      shell: bash
+      run: phel --version
