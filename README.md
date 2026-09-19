@@ -104,7 +104,7 @@ Speeds up CI by reusing Composer's download cache between runs:
     env:
       COMPOSER_AUTH: '{"github-oauth":{"github.com":"${{ secrets.GITHUB_TOKEN }}"}}'
   ```
-- **Version mismatch** — pin `phel-version` (e.g. `^0.18`) instead of `*` for reproducible builds.
+- **Version mismatch** — pin `phel-version` (e.g. `^0.52`) instead of `*` for reproducible builds.
 
 ## License
 
