@@ -11,9 +11,9 @@ inputs:
     required: false
     default: '*'
   php-version:
-    description: 'PHP version (Phel requires >= 8.4)'
+    description: 'PHP version (Phel requires >= 8.5)'
     required: false
-    default: '8.4'
+    default: '8.5'
   tools:
     description: 'Extra tools to install via shivammathur/setup-php (default: composer:v2)'
     required: false
