@@ -97,7 +97,7 @@ Speeds up CI by reusing Composer's download cache between runs:
 ## Troubleshooting
 
 - **`phel: command not found`**: Composer global bin dir not on `$PATH`. Action adds it automatically; if running steps in a custom shell or container, ensure `$GITHUB_PATH` is honoured.
-- **`Your requirements could not be resolved... requires php >=8.5`**: bump `php-version` input to `8.5` or higher. Phel 0.52 and older still run on PHP 8.4, so pin `phel-version: '^0.52'` if you must stay on 8.4.
+- **`Your requirements could not be resolved... requires php >=8.5`**: bump `php-version` input to `8.5` or higher.
 - **`Could not authenticate against github.com`**: Composer hit GitHub rate limit. Set `COMPOSER_AUTH` env or pass a `GITHUB_TOKEN`:
   ```yaml
   - uses: phel-lang/setup-phel-action@v1
